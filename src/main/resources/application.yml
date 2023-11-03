@@ -2,17 +2,13 @@ server:
   port: 8088
 
 spring:
-#  main:
-#    allow-bean-definition-overriding: false
-#    allow-circular-references: true
   application:
     name: twitter-clone
+  config:
+    import: optional:file:.env[.properties]
   data:
     mongodb:
-      username: daniel
-      password: RfmWvjcnvNPGB4IW
-      #       mongodb+srv://daniel:<password>@cluster.8f5h5em.mongodb.net/?retryWrites=true&w=majority
-      uri: mongodb+srv://daniel:RfmWvjcnvNPGB4IW@cluster.8f5h5em.mongodb.net/?retryWrites=true&w=majority
+      uri: mongodb+srv://${DB_USER}:${DB_PSWD}@${DB_URI_URL}/${DB_URI_TAIL}
       database: proxy_seller
       auto-index-creation: true
 
@@ -20,5 +16,4 @@ logging:
   level:
     root: INFO
     org.springframework:
-#        security: DEBUG
         security: INFO

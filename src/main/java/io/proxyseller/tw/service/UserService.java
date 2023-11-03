@@ -47,7 +47,6 @@ public class UserService {
                 .map(UserEntity::getId).orElse(null);
     }
 
-    //TODO: return UserEntity
     public UserEntity register(@NotNull UserDto user) {
         if (!hasLength(user.getLogin())) {
             throw new UserRegistrationException("login", NOT_EMPTY);

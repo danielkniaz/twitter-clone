@@ -2,14 +2,11 @@ package io.proxyseller.tw.controller;
 
 import io.proxyseller.tw.controller.dto.PostDto;
 import io.proxyseller.tw.exception.GeneralException;
-import io.proxyseller.tw.exception.NotFoundException;
-import io.proxyseller.tw.exception.UserRegistrationException;
 import io.proxyseller.tw.service.PostService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -70,21 +67,5 @@ public class PostController {
     @GetMapping("/{postId}")
     public ResponseEntity<PostDto> findPost(@RequestParam String postId) {
         return ResponseEntity.ok(service.findPost(postId));
-    }
-
-
-    @ExceptionHandler
-    public ResponseEntity<Void> notFoundException(NotFoundException _e) {
-        return ResponseEntity.notFound().build();
-    }
-
-    @ExceptionHandler
-    public ResponseEntity<Void> registrationException(UserRegistrationException _e) {
-        return ResponseEntity.badRequest().build();
-    }
-
-    @ExceptionHandler
-    public ResponseEntity<Void> exception(GeneralException _e) {
-        return ResponseEntity.badRequest().build();
     }
 }

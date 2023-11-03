@@ -58,7 +58,7 @@ public class PostController {
 
     @GetMapping("/{userId}")
     public ResponseEntity<List<PostDto>> findUserPosts(@PathVariable String userId) {
-        return ResponseEntity.ok(service.findUserPosts(userId).stream().map(PostDto::from).toList()));
+        return ResponseEntity.ok(service.findUserPosts(userId).stream().map(PostDto::from).toList());
     }
 
     @GetMapping("/my")

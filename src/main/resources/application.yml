@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: twitter-clone
+    name: social-network
   config:
     import: optional:file:.env[.properties]
   data:
